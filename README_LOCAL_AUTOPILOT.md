@@ -1,3 +1,5 @@
+![CI](https://github.com/asoudi1987/chatgpt-prompts/actions/workflows/ci.yml/badge.svg?branch=main)
+
 # Local Autopilot (VS Code Agent + Guardrails)
 
 ## What this does
