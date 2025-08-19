@@ -1,0 +1,12 @@
+docs:
+  - "**/*.md"
+  - "docs/**"
+ci:
+  - ".github/workflows/**"
+config:
+  - ".vscode/**"
+  - ".agent/**"
+code:
+  - "**/*.js"
+  - "**/*.ts"
+  - "**/*.py"
