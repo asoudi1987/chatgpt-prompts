@@ -1,6 +1,3 @@
-# Labeler v5 config — each label maps to an array of "config options"
-# Here we use the recommended "changed-files" rule with explicit globs.
-
 docs:
   - changed-files:
       - any-glob-to-any-file: 'docs/**'
