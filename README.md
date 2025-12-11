@@ -74,6 +74,28 @@ const run = async () => {
 run().catch((err) => console.log("Something went wrong"));
 ```
 
+## 🩺 HIPAA medical correspondence assistant (MVP-friendly)
+
+Use `hipaaMedicalCorrespondenceAssistant` when you need a prompt that keeps inputs non-identifiable while drafting prior authorization or claim emails for Oncology and Cardiology workflows. It explicitly avoids patient names or other direct identifiers and reminds the model to process all inputs ephemerally.
+
+```typescript
+import { createChatGPTPrompt } from "chatgpt-prompts";
+
+const prompts = createChatGPTPrompt({ apiKey: "OPEN_AI_API_KEY" });
+
+const emailDraft = await prompts.hipaaMedicalCorrespondenceAssistant(`
+Specialty: Oncology
+Patient Age: 62
+Diagnosis: metastatic non-small cell lung cancer
+Procedure: PET-CT restaging scan
+Clinical Justification: disease restaging needed to guide systemic therapy change due to progression on prior line
+CPT Codes: 78815
+Clinical Notes (summary only, no PHI): Progressive disease on last CT, ECOG 1, tolerating therapy.
+`);
+
+console.log(emailDraft.text);
+```
+
 # 💯 Credits
 
 - A big thank you to [Travis Fischer](https://github.com/transitive-bullshit) for making an amazing [NodeJS Client](https://github.com/transitive-bullshit/chatgpt-api) of the ChatGPT API.
