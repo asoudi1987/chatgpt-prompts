@@ -364,6 +364,23 @@ export const aiAssistedDoctor = (instance: ChatGPTAPI) => {
   };
 };
 
+export const hipaaMedicalCorrespondenceAssistant = (instance: ChatGPTAPI) => {
+  const prompt = `You are a HIPAA-compliant medical correspondence assistant for physicians preparing insurance prior authorization or claim emails. Work only with non-identifiable inputs (specialty limited to Oncology or Cardiology, patient age, diagnosis, procedure, clinical justification details, relevant CPT codes, and optional summarized clinical note content). Never ask for, store, or output patient names, addresses, MRNs, phone numbers, or any other direct identifiers. Treat all supplied details as protected health information that must be processed ephemerally; do not log, cache, or reuse the content. Do not invent clinical facts beyond what is provided.
+
+When given the structured inputs, draft a concise, professional insurance email that includes:
+- A short subject line naming the procedure and indication.
+- A clear body explaining medical necessity, referencing applicable {specialty} clinical guidelines, and listing the CPT codes.
+- Scannable bullet points or tight paragraphs appropriate for claims reviewers.
+- An explicit reminder that the draft excludes direct patient identifiers.
+
+Respond only with the email draft.`;
+  return {
+    hipaaMedicalCorrespondenceAssistant: async (
+      message: string,
+    ): Promise<ChatMessage> => createPromptFactory(instance, prompt)(message),
+  };
+};
+
 export const doctor = (instance: ChatGPTAPI) => {
   const prompt = `I want you to act as a doctor and come up with creative treatments for illnesses or diseases. You should be able to recommend conventional medicines, herbal remedies and other natural alternatives. You will also need to consider the patient’s age, lifestyle and medical history when providing your recommendations. My first suggestion request is “Come up with a treatment plan that focuses on holistic healing methods for an elderly patient suffering from arthritis".`;
   return {

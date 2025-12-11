@@ -59,6 +59,7 @@ const createChatGPTPrompt: ChatGPTPromptsClient = (params) => {
     ...prompts.dentist(instance),
     ...prompts.webDesignConsultant(instance),
     ...prompts.aiAssistedDoctor(instance),
+    ...prompts.hipaaMedicalCorrespondenceAssistant(instance),
     ...prompts.doctor(instance),
     ...prompts.accountant(instance),
     ...prompts.chef(instance),
